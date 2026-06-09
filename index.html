@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generatore Check-in Sportivo</title>
-    <!-- Includiamo i font ufficiali per replicare lo stile pulito dello screen -->
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --sports-green: #1b8a5a;
+            var(--sports-green): #1b8a5a;
             --text-dark: #1e2432;
             --text-gray: #657786;
             --text-green: #11693e;
@@ -56,19 +55,20 @@
         .phone-container {
             width: 100%;
             max-width: 412px;
-            height: 892px; /* Proporzioni iPhone standard */
+            height: 892px;
             background-color: var(--bg-app);
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* --- HEADER VERDE SPORT --- */
+        /* --- HEADER VERDE SPORT CON PATTERN SVG DISEGNATO --- */
         .green-header {
-            background-color: var(--sports-green);
-            /* Sfondo geometrico leggero ispirato a palloni/racchette in IMG_0891.jpg */
-            background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 40%),
-                              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 30%);
+            background-color: #219653; /* Verde originale più brillante */
+            /* Pattern SVG generato via codice con pallone, guantone e pesi scuri */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='412' height='240' viewBox='0 0 412 240'%3E%3Cg stroke='rgba(0,0,0,0.06)' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Pallone Calcio --%3E%3Ccircle cx='75' cy='140' r='55'/%3E%3Cpath d='M 75 110 L 100 130 L 90 160 L 60 160 L 50 130 Z'/%3E%3Cpath d='M 75 85 L 75 110 M 115 175 L 90 160 M 35 175 L 60 160 M 25 115 L 50 130 M 125 115 L 100 130'/%3E%3C!-- Corde Tennis/Racchetta --%3E%3Cpath d='M 130 -20 C 130 60, 200 90, 260 70'/%3E%3Ccircle cx='230' cy='65' r='20'/%3E%3Cpath d='M 215 75 Q 230 55 245 75'/%3E%3C!-- Guantone da Boxe --%3E%3Cpath d='M 280 110 C 250 60, 360 40, 360 110 C 370 170, 300 180, 280 110 Z'/%3E%3Cpath d='M 270 130 C 290 170, 340 140, 330 90'/%3E%3C!-- Manubrio Crossfit --%3E%3Cpath d='M 350 200 L 400 150' stroke-width='5'/%3E%3Cpath d='M 340 180 L 370 210 M 330 190 L 360 220' stroke-width='12'/%3E%3Cpath d='M 380 140 L 410 170 M 390 130 L 420 160' stroke-width='12'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
             height: 240px;
             position: relative;
             color: #ffffff;
@@ -114,7 +114,7 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            border: 4px solid var(--sports-green);
+            border: 4px solid #219653; /* Bordo allineato al nuovo verde */
             box-sizing: border-box;
         }
 
@@ -149,7 +149,7 @@
             border-top-right-radius: 24px;
             margin-top: -24px;
             position: relative;
-            padding-top: 75px; /* Spazio per far sporgere l'avatar */
+            padding-top: 75px; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -212,7 +212,6 @@
             line-height: 1.3;
         }
 
-        /* Nascondi il pannello se si decide di stampare in PDF o fare screenshot puliti */
         @media print {
             #control-panel { display: none; }
             .phone-container { box-shadow: none; }
@@ -221,41 +220,33 @@
 </head>
 <body>
 
-<!-- PANNELLO DI CONTROLLO INTERATTIVO -->
     <div id="control-panel">
         <label for="datetime-input">Scegli Data e Ora del Check-in:</label>
         <input type="datetime-local" id="datetime-input">
-        <button onclick="this.parentElement.style.display='none'" style="margin-top: 10px; padding: 10px; background: #1b8a5a; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem;">✅ Confirm & Hide Panel</button>
+        <button onclick="this.parentElement.style.display='none'" style="margin-top: 10px; padding: 10px; background: #219653; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem;">✅ Conferma e Nascondi</button>
     </div>
 
-    <!-- SCHERMATA SMARTPHONE -->
     <div class="phone-container">
         
-        <!-- HEADER VERDE -->
         <div class="green-header">
             
             <div class="header-actions">
                 <div class="btn-circle">
-                    <!-- Icona Chiudi (X) -->
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </div>
                 <div class="btn-circle">
-                    <!-- Icona Condividi (Upload) -->
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
                 </div>
             </div>
 
-            <!-- FOTO PROFILO + TRATTINI E PALLINI ATTACCATI INTORNO -->
             <div class="avatar-wrapper">
                 <svg class="rotating-svg" viewBox="0 0 100 100">
                     <circle class="animated-border" cx="50" cy="50" r="46"/>
                 </svg>
-                <!-- Sostituisci questo link per inserire una tua foto diversa in futuro -->
-                   <img class="avatar-img" src="my-photo.jpg" alt="Foto Profilo">
+                <img class="avatar-img" src="my-photo.jpg" alt="Foto Profilo">
             </div>
         </div>
 
-        <!-- AREA BIANCA CON DATI CORRENTI -->
         <div class="card-body">
             <div class="user-info">
                 <h2 class="user-name">Francesco Zollo • 672426597</h2>
@@ -267,7 +258,6 @@
                 </div>
             </div>
 
-            <!-- DETTAGLI COMPLETI COME DA SCREEN ORIGINALE -->
             <div class="details-list">
                 <div class="detail-item">
                     <div class="detail-icon">
@@ -279,7 +269,6 @@
 
                 <div class="detail-item">
                     <div class="detail-icon">
-                        <!-- Icona borraccia/sport stilizzata -->
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h12V10H6v10zM9 10V6a3 3 0 0 1 6 0v4M12 2v2"/></svg>
                     </div>
                     <div class="detail-label">Activity</div>
@@ -298,7 +287,6 @@
 
     </div>
 
-    <!-- LOGICA IN JAVASCRIPT PER AGGIORNARE LA DATA IN TEMPO REALE -->
     <script>
         const datetimeInput = document.getElementById('datetime-input');
         const checkinDateString = document.getElementById('checkin-date-string');
@@ -317,16 +305,14 @@
             checkinDateString.innerText = `${monthStr} ${dayStr}, ${hours}:${minutes}`;
         }
 
-        // Imposta la data iniziale corretta al caricamento (Default: Ora corrente locale)
+        // Imposta la data iniziale
         const now = new Date();
         updateDateTime(now);
 
-        // Pre-compila l'input HTML con la data corrente convertita nel fuso orario locale corretto
         const tzOffset = now.getTimezoneOffset() * 60000;
         const localISOTime = (new Date(now - tzOffset)).toISOString().slice(0, 16);
         datetimeInput.value = localISOTime;
 
-        // Ascolta le modifiche dell'utente sul calendario/orologio
         datetimeInput.addEventListener('input', (e) => {
             if (e.target.value) {
                 const selectedDate = new Date(e.target.value);
