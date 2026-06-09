@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            var(--sports-green): #1b8a5a;
+      :root {
+            --sports-green: #1b7a4d; /* Verde più scuro e profondo */
             --text-dark: #1e2432;
             --text-gray: #657786;
             --text-green: #11693e;
@@ -62,11 +62,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* --- HEADER VERDE SPORT CON PATTERN SVG DISEGNATO --- */
+      /* --- HEADER VERDE SPORT CON ONDE E PATTERN SVG --- */
         .green-header {
-            background-color: #219653; /* Verde originale più brillante */
-            /* Pattern SVG generato via codice con pallone, guantone e pesi scuri */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='412' height='240' viewBox='0 0 412 240'%3E%3Cg stroke='rgba(0,0,0,0.06)' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Pallone Calcio --%3E%3Ccircle cx='75' cy='140' r='55'/%3E%3Cpath d='M 75 110 L 100 130 L 90 160 L 60 160 L 50 130 Z'/%3E%3Cpath d='M 75 85 L 75 110 M 115 175 L 90 160 M 35 175 L 60 160 M 25 115 L 50 130 M 125 115 L 100 130'/%3E%3C!-- Corde Tennis/Racchetta --%3E%3Cpath d='M 130 -20 C 130 60, 200 90, 260 70'/%3E%3Ccircle cx='230' cy='65' r='20'/%3E%3Cpath d='M 215 75 Q 230 55 245 75'/%3E%3C!-- Guantone da Boxe --%3E%3Cpath d='M 280 110 C 250 60, 360 40, 360 110 C 370 170, 300 180, 280 110 Z'/%3E%3Cpath d='M 270 130 C 290 170, 340 140, 330 90'/%3E%3C!-- Manubrio Crossfit --%3E%3Cpath d='M 350 200 L 400 150' stroke-width='5'/%3E%3Cpath d='M 340 180 L 370 210 M 330 190 L 360 220' stroke-width='12'/%3E%3Cpath d='M 380 140 L 410 170 M 390 130 L 420 160' stroke-width='12'/%3E%3C/g%3E%3C/svg%3E");
+            background-color: var(--sports-green);
+            /* Pattern SVG con onda chiara in sottofondo + icone sportive scure */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='412' height='240' viewBox='0 0 412 240'%3E%3C!-- Onde morbide chiare --%3E%3Cpath d='M -50 180 Q 150 20 450 130 L 450 250 L -50 250 Z' fill='rgba(255,255,255,0.05)'/%3E%3Cpath d='M -50 240 Q 200 120 450 200 L 450 250 L -50 250 Z' fill='rgba(255,255,255,0.03)'/%3E%3Cg stroke='rgba(0,0,0,0.07)' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Pallone Calcio --%3E%3Ccircle cx='75' cy='140' r='55'/%3E%3Cpath d='M 75 110 L 100 130 L 90 160 L 60 160 L 50 130 Z'/%3E%3Cpath d='M 75 85 L 75 110 M 115 175 L 90 160 M 35 175 L 60 160 M 25 115 L 50 130 M 125 115 L 100 130'/%3E%3C!-- Corde Tennis/Racchetta --%3E%3Cpath d='M 130 -20 C 130 60, 200 90, 260 70'/%3E%3Ccircle cx='230' cy='65' r='20'/%3E%3Cpath d='M 215 75 Q 230 55 245 75'/%3E%3C!-- Guantone da Boxe --%3E%3Cpath d='M 280 110 C 250 60, 360 40, 360 110 C 370 170, 300 180, 280 110 Z'/%3E%3Cpath d='M 270 130 C 290 170, 340 140, 330 90'/%3E%3C!-- Manubrio Crossfit --%3E%3Cpath d='M 350 200 L 400 150' stroke-width='5'/%3E%3Cpath d='M 340 180 L 370 210 M 330 190 L 360 220' stroke-width='12'/%3E%3Cpath d='M 380 140 L 410 170 M 390 130 L 420 160' stroke-width='12'/%3E%3C/g%3E%3C/svg%3E");
             background-size: cover;
             background-position: center;
             height: 240px;
