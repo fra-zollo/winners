@@ -127,16 +127,16 @@
             height: 170px;
             transform: rotate(-90deg);
         }
-        .animated-border {
+.animated-border {
             fill: none;
             stroke: #ffffff;
             stroke-width: 2.5;
             stroke-linecap: round;
-            /* Nuova sequenza magica: 
-               25 = Linea, 10 = Spazio, 
-               0 = Pallino perfetto, 10 = Spazio, 
-               0 = Secondo pallino perfetto, 10 = Spazio finale */
-            stroke-dasharray: 25 10 0 10 0 10; 
+            /* SEQUENZA IRREGOLARE (Stile Codice Morse): 
+               35 (linea lunga), 4 (spazio micro), 0 (pallino quasi attaccato), 
+               12 (spazio medio), 0 (pallino solitario), 20 (spazio grande), 
+               20 (linea media), 5 (spazio piccolo), 0 (pallino), 15 (spazio medio) */
+            stroke-dasharray: 35 4 0 12 0 20 20 5 0 15; 
             transform-origin: center;
             animation: spin 25s linear infinite;
         }
