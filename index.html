@@ -118,7 +118,7 @@
             box-sizing: border-box;
         }
 
-        /* Cerchio SVG per creare la sequenza esatta di Trattino-Spazio-Pallino-Spazio */
+/* Cerchio SVG per creare la sequenza esatta: Trattino lungo, e due pallini piccoli */
         .rotating-svg {
             position: absolute;
             top: 0;
@@ -132,8 +132,11 @@
             stroke: #ffffff;
             stroke-width: 2.5;
             stroke-linecap: round;
-            /* La sequenza crea alternatamente un trattino lungo e un pallino corto */
-            stroke-dasharray: 25 12 1 12; 
+            /* Nuova sequenza magica: 
+               25 = Linea, 10 = Spazio, 
+               0 = Pallino perfetto, 10 = Spazio, 
+               0 = Secondo pallino perfetto, 10 = Spazio finale */
+            stroke-dasharray: 25 10 0 10 0 10; 
             transform-origin: center;
             animation: spin 25s linear infinite;
         }
