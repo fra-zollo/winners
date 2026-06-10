@@ -67,7 +67,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Altezza proporzionata e ridotta a 210px */
         .green-header {
             background-color: var(--sports-green);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='412' height='240' viewBox='0 0 412 240'%3E%3Cpath d='M -50 180 Q 150 20 450 130 L 450 250 L -50 250 Z' fill='rgba(255,255,255,0.05)'/%3E%3Cpath d='M -50 240 Q 200 120 450 200 L 450 250 L -50 250 Z' fill='rgba(255,255,255,0.03)'/%3E%3Cg stroke='rgba(0,0,0,0.07)' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='75' cy='140' r='55'/%3E%3Cpath d='M 75 110 L 100 130 L 90 160 L 60 160 L 50 130 Z'/%3E%3Cpath d='M 75 85 L 75 110 M 115 175 L 90 160 M 35 175 L 60 160 M 25 115 L 50 130 M 125 115 L 100 130'/%3E%3Cpath d='M 130 -20 C 130 60, 200 90, 260 70'/%3E%3Ccircle cx='230' cy='65' r='20'/%3E%3Cpath d='M 215 75 Q 230 55 245 75'/%3E%3Cpath d='M 280 110 C 250 60, 360 40, 360 110 C 370 170, 300 180, 280 110 Z'/%3E%3Cpath d='M 270 130 C 290 170, 340 140, 330 90'/%3E%3Cpath d='M 350 200 L 400 150' stroke-width='5'/%3E%3Cpath d='M 340 180 L 370 210 M 330 190 L 360 220' stroke-width='12'/%3E%3Cpath d='M 380 140 L 410 170 M 390 130 L 420 160' stroke-width='12'/%3E%3C/g%3E%3C/svg%3E");
@@ -84,7 +83,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px; /* Spostato proporzionalmente */
+            margin-top: 20px; 
         }
         
         .btn-circle {
@@ -99,7 +98,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Riposizionato l'avatar in base al nuovo vincolo d'altezza */
         .avatar-wrapper {
             position: absolute;
             bottom: -55px;
@@ -150,12 +148,12 @@
             border-top-right-radius: 24px;
             margin-top: -24px;
             position: relative;
-            /* 72px preserva la stessa esatta aria visiva tra la curva e il nome */
-            padding-top: 72px; 
+            /* AUMENTATO IL PADDING TOP per dare più aria sotto la foto */
+            padding-top: 85px; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: calc(100% - 186px); /* 210px - 24px = 186px */
+            height: calc(100% - 186px);
             box-sizing: border-box;
         }
 
@@ -168,7 +166,8 @@
             font-size: 1.4rem; 
             font-weight: 700;
             color: var(--text-dark);
-            margin: 0 0 4px 0; 
+            /* AUMENTATO IL MARGINE BOTTOM per bilanciare esattamente il nome al centro */
+            margin: 0 0 10px 0; 
         }
         
         .checkin-status {
@@ -179,6 +178,14 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
+        }
+        
+        /* Aggiunta transizione fluida per il conto alla rovescia */
+        #countdown-timer {
+            font-variant-numeric: tabular-nums;
+            display: inline-block;
+            min-width: 20px;
+            text-align: left;
         }
 
         .details-list {
@@ -255,7 +262,7 @@
                     <span>Check-in:</span>
                     <span id="checkin-date-string">Jun 09, 18:56</span>
                     <span>•</span>
-                    <span>9</span>
+                    <span id="countdown-timer">20</span>
                 </div>
             </div>
 
@@ -295,6 +302,7 @@
     </div>
 
     <script>
+        // LOGICA PER DATA E ORA
         const datetimeInput = document.getElementById('datetime-input');
         const checkinDateString = document.getElementById('checkin-date-string');
 
@@ -321,6 +329,18 @@
                 updateDateTime(selectedDate);
             }
         });
+
+        // NUOVA LOGICA PER IL CONTO ALLA ROVESCIA (LOOP 20 -> 1)
+        const countdownTimer = document.getElementById('countdown-timer');
+        let count = 20;
+
+        setInterval(() => {
+            count--;
+            if (count < 1) {
+                count = 20;
+            }
+            countdownTimer.innerText = count;
+        }, 1000); // Scatta ogni secondo esatto
     </script>
 </body>
 </html>
