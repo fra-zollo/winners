@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Generatore Check-in Sportivo</title>
     
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1b7a4d">
 
@@ -22,11 +22,12 @@
             --bg-app: #ffffff;
         }
 
+        /* Mettiamo il verde anche come sfondo del body per evitare "rimbalzi" bianchi in alto */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f0f2f5;
+            background-color: var(--sports-green); 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -72,10 +73,16 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='412' height='240' viewBox='0 0 412 240'%3E%3Cpath d='M -50 180 Q 150 20 450 130 L 450 250 L -50 250 Z' fill='rgba(255,255,255,0.05)'/%3E%3Cpath d='M -50 240 Q 200 120 450 200 L 450 250 L -50 250 Z' fill='rgba(255,255,255,0.03)'/%3E%3Cg stroke='rgba(0,0,0,0.07)' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='75' cy='140' r='55'/%3E%3Cpath d='M 75 110 L 100 130 L 90 160 L 60 160 L 50 130 Z'/%3E%3Cpath d='M 75 85 L 75 110 M 115 175 L 90 160 M 35 175 L 60 160 M 25 115 L 50 130 M 125 115 L 100 130'/%3E%3Cpath d='M 130 -20 C 130 60, 200 90, 260 70'/%3E%3Ccircle cx='230' cy='65' r='20'/%3E%3Cpath d='M 215 75 Q 230 55 245 75'/%3E%3Cpath d='M 280 110 C 250 60, 360 40, 360 110 C 370 170, 300 180, 280 110 Z'/%3E%3Cpath d='M 270 130 C 290 170, 340 140, 330 90'/%3E%3Cpath d='M 350 200 L 400 150' stroke-width='5'/%3E%3Cpath d='M 340 180 L 370 210 M 330 190 L 360 220' stroke-width='12'/%3E%3Cpath d='M 380 140 L 410 170 M 390 130 L 420 160' stroke-width='12'/%3E%3C/g%3E%3C/svg%3E");
             background-size: cover;
             background-position: center;
-            height: 210px; 
+            
+            /* LA MAGIA: Allunga la fascia dinamicamente SOLO dello spazio della Notch/Isola */
+            height: calc(210px + env(safe-area-inset-top, 0px)); 
+            padding-top: calc(16px + env(safe-area-inset-top, 0px));
+            
             position: relative;
             color: #ffffff;
-            padding: 16px 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 16px;
             box-sizing: border-box;
         }
 
@@ -83,7 +90,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* AUMENTATO A 45px: Questo crea una "Safe Area" per scavalcare Notch e Batteria iPhone */
             margin-top: 45px; 
         }
         
